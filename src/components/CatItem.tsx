@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
-import {addFavorite, getFavorites, removeFavorite} from "../lib/favorites.ts";
-
+import {useFavorites} from "../lib/FavoriteContext.tsx";
+// import {addFavorite, getFavorites, removeFavorite} from "../lib/favorites.ts";
 interface Cat {
     id: string;
     url: string;
@@ -17,7 +17,19 @@ interface Breed {
 }
 
 const CatItem: React.FC<{ cat?: Cat }> = ({ cat }) => {
-    const isFavorite = getFavorites()?.some((fav) => fav?.id === cat?.id);
+    const { favorites, addFavorite, removeFavorite } = useFavorites();
+
+    const isFavorite = cat ? favorites.some((fav: Cat) => fav.id === cat.id) : false;
+
+    const handleFavoriteClick = () => {
+        if (!cat) return;
+        if (isFavorite) {
+            removeFavorite(cat.id);
+        } else {
+            addFavorite(cat);
+        }
+    };
+
     return (
         <div className="cat-item">
             <Link to={`/details/${cat?.id}`}>
@@ -35,7 +47,7 @@ const CatItem: React.FC<{ cat?: Cat }> = ({ cat }) => {
                 </div>
             </Link>
 
-            <button className={`cat-item__fav-btn ${isFavorite ? "remove" : "add"}`} onClick = {() => isFavorite ? removeFavorite(cat?.id) : addFavorite(cat)}>
+            <button className={`cat-item__fav-btn ${isFavorite ? "remove" : "add"}`} onClick={handleFavoriteClick}>
                 {isFavorite ? "Удалить" : "Добавить"}
             </button>
         </div>

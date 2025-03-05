@@ -12,25 +12,26 @@ interface Breed {
     origin?: string;
 }
 
-export const getFavorites = (): Cat[] | null => {
+export const getFavorites = (): Cat[] => {
     const savedFavorites = localStorage.getItem("favorites");
     if (!savedFavorites) {
-        return null;
+        return [];
     }
     const favorites = JSON.parse(savedFavorites);
     if (favorites.length === 0) {
-        return null;
+        return [];
     }
     if (favorites[0] === null) {
-        return null;
+        return [];
     }
     return favorites;
 }
 
-export const addFavorite = (cat: Cat | undefined) => {
+export const addFavorite = (cat: Cat) => {
     if (!cat) return;
     const prevFavorites = getFavorites();
-    const newFavorites = prevFavorites ? [...prevFavorites, cat] : [];
+
+    const newFavorites = [...prevFavorites, cat];
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
 };
 
