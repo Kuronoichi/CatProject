@@ -36,6 +36,7 @@ export const addFavorite = (cat: Cat | undefined) => {
 
 export const removeFavorite = (catID: string | undefined) => {
     if (!catID) return;
+    getFavorites();
     const prevFavorites = getFavorites();
     const newFavorites = prevFavorites?.filter((cat) => cat.id !== catID);
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
