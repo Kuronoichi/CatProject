@@ -1,0 +1,30 @@
+.favorites-page {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.favorites-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.favorites-list__empty {
+    font-size: 20px;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .favorites-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .favorites-list {
+        grid-template-columns: 1fr;
+    }
+}

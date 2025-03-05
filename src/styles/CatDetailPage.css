@@ -1,0 +1,52 @@
+.cat-detail {
+    text-align: center;
+    margin: 20px;
+}
+
+.cat-detail__title {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.cat-detail__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.cat-detail__info {
+    font-size: 18px;
+    color: #ddd;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cat-detail__description,
+.cat-detail__temperament,
+.cat-detail__origin {
+    margin-bottom: 10px;
+}
+
+
+.back-button {
+    background-color: #212121;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: #333;
+}
